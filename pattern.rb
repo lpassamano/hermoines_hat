@@ -35,7 +35,7 @@ class Pattern
     '\\'
   end
 
-  # INSTANCE METHODS
+  ### METHODS THAT DEFINE THE HAT PATTERN ###
   def knit_pattern
     # main method to run the pattern and interact with user
     puts 'Welcome to the knitting machine! Today we are going to knit a hat.'
@@ -46,10 +46,7 @@ class Pattern
 
     puts "Great! Let's knit your hat!!!"
     knit_row(current_row, hat, stitches)
-
-    puts "\nWe have completed the body of the hat. Now we decrease to create the crown...\n"
     decrease_row(current_row, hat, stitches)
-
     puts "\nYour hat is now complete!"
     puts ""
   end
@@ -118,10 +115,13 @@ class Pattern
   end
 
   def display_hat(hat)
+    # prints the hat to terminal
+    sleep(1)
     hat.each { |row| puts row.join('') }
   end
 
   def rib_row(stitches)
+    # creates 1x1 rib (alternating knit and purl stitches)
     row = []
     while stitches >= 2
       row << knit
@@ -135,6 +135,7 @@ class Pattern
   end
 
   def solid_row(stitches)
+    # creates row that does not have cable or eyelet stitches
     row = []
     while stitches >= 10
       knit_sts = []
@@ -149,6 +150,7 @@ class Pattern
   end
 
   def right_eyelet_row(stitches)
+    # creates row with eyelet on the right of the purl section
     row = []
     while stitches >= 11
       6.times { row << knit }
@@ -161,6 +163,7 @@ class Pattern
   end
 
   def center_eyelet_row(stitches)
+    # creates row with eyelet on the center of the purl section
     row = []
     while stitches >= 11
       6.times { row << knit }
@@ -174,6 +177,7 @@ class Pattern
   end
 
   def left_eyelet_row(stitches)
+    # creates row with eyelet on the left of the purl section
     row = []
     while stitches >= 11
       6.times { row << knit }
@@ -187,6 +191,7 @@ class Pattern
   end
 
   def cable_row(stitches)
+    # creates row with six left leaning knit stitches
     row = []
     while stitches >= 11
       6.times { row << cable_knit }
